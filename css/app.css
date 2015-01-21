@@ -139,6 +139,10 @@ section.splash-screen splash content logo-wrap {
 }
 section.splash-screen splash content logo-wrap.rotated {
   transition: 2s;
+  -ms-transform: rotate(144deg);
+  /* IE 9 */
+  -webkit-transform: rotate(144deg);
+  /* Chrome, Safari, Opera */
   transform: rotate(144deg);
 }
 section.splash-screen splash content logo-wrap logo {
@@ -262,6 +266,7 @@ footer content links a:last-child {
 }
 footer content icons {
   padding: 10px 0;
+  padding-top: 30px;
 }
 footer content icons a {
   width: 30px;
