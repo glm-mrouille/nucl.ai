@@ -115,6 +115,9 @@ header content a.nuclAi-go-top {
 header content a.visible {
   background-color: #6409a5;
 }
+.splash-screen-wrap {
+  background-color: #a18d75;
+}
 section.splash-screen {
   min-height: calc(68.66666667vh);
   background: center;
@@ -259,7 +262,6 @@ footer content links a:last-child {
 }
 footer content icons {
   padding: 10px 0;
-  padding-top: 30px;
 }
 footer content icons a {
   width: 30px;
