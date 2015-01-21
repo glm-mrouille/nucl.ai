@@ -124,6 +124,7 @@ section.splash-screen {
   background-size: cover;
 }
 section.splash-screen splash {
+  display: block;
   background-color: rgba(34, 44, 66, 0.75);
   min-height: inherit;
   display: flex;
@@ -131,6 +132,7 @@ section.splash-screen splash {
   flex-flow: column nowrap;
 }
 section.splash-screen splash content {
+  padding: 40px 0;
   text-align: center;
 }
 section.splash-screen splash content logo-wrap {
