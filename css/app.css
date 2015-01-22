@@ -201,11 +201,6 @@ section.about {
 }
 section.about content {
   padding: 20px 0;
-}
-section.about content item {
-  float: left;
-}
-section.about content.headline {
   display: flex;
   justify-content: space-around;
   flex-flow: column nowrap;
@@ -213,19 +208,34 @@ section.about content.headline {
   padding-left: 15px;
   background: none;
 }
-section.about content.headline h2 {
+section.about content item {
+  float: left;
+}
+section.about content h2 {
   font-size: 36px;
   text-align: center;
   line-height: 125%;
   text-shadow: 0px 0px 8px #103f69;
 }
-section.about content.headline h3 {
+section.about content h3 {
   font-size: 24px;
   text-align: center;
   font-weight: normal;
   opacity: 0.75;
   line-height: 125%;
   text-shadow: 0px 0px 4px #103f69;
+}
+section.about content .columns {
+  -webkit-column-count: 3;
+  -webkit-column-gap: 24px;
+  text-align: justify;
+  margin-top: 28ex;
+}
+section.about content .columns p {
+  color: #ffffff;
+  font-size: 17px;
+  line-height: 1.25;
+  margin-top: 0;
 }
 section.about canvas {
   width: 100%;
@@ -247,6 +257,7 @@ form.newsletter-form div.submit-holder {
 footer {
   display: block;
   background-color: #333333;
+  color: #c0c0c0;
   width: 100%;
   min-height: 150px;
 }
