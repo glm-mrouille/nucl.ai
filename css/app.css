@@ -224,7 +224,15 @@ section.about content h3 {
 }
 section.about content .columns {
   -webkit-column-count: 3;
+  /* Chrome, Safari, Opera */
+  -moz-column-count: 3;
+  /* Firefox */
+  column-count: 3;
   -webkit-column-gap: 24px;
+  /* Chrome, Safari, Opera */
+  -moz-column-gap: 24px;
+  /* Firefox */
+  column-gap: 24px;
   text-align: justify;
   margin-top: 28ex;
 }
