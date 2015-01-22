@@ -51,9 +51,6 @@ section:nth-child(even) {
 section:nth-child(odd) {
   background-color: #333333;
 }
-section:nth-child(odd):last-child {
-  box-shadow: inset 0 -22px 25px -20px #f1f0ef;
-}
 section titlebar {
   display: block;
   height: 100px;
