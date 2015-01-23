@@ -1,57 +1,34 @@
-@SECTION_PADDING_HORIZONTAL: 15px;
-@SECTION_PADDING_VERICAL: 20px;
+@CONTENT_PADDING_VERTICAL: 20px;
 
 section {
     min-height: calc(~"85vh");
     overflow: hidden;
-
     &:nth-child(even) {
         background-color: @BLUE;
     }
 
     &:nth-child(odd) {
         background-color: @GREY;
+        &:last-child { box-shadow: inset 0 -22px 25px -20px @LIGHT_GREY; }
+        &:first-child { box-shadow: none; }
     }
 
-    titlebar {
+    grid {
+        width: @PAGE_WIDHT;
+        margin: auto;
         display: block;
-        height: 100px;
-        background-color: fade(@DARK_GREY, 60%);
-        h2 {
-            margin: 0;
-            line-height: 100px;
-            text-align: center;
-            &.navigation {
-                &:hover {
-                    cursor: pointer;
+        content {
+            padding: @CONTENT_PADDING_VERTICAL 0;
+            item {
+                display: block;
+                p {
+                    &:first-child {
+                        font-weight: bold;
+                        display: inline-block;
+                        min-height: 30px
+                    }
                 }
             }
-        }
-    }
-    content {
-        padding: @SECTION_PADDING_VERICAL 0;
-        item {
-            display: block;
-            padding: 0 @SECTION_PADDING_HORIZONTAL;
-            p {
-                &:first-child {
-                    font-weight: bold;
-                    display: inline-block;
-                    min-height: 30px
-                }
-            }
-            &.narrow {
-                width: @THIRDS - 2 * @SECTION_PADDING_HORIZONTAL;
-            }
-            &.wide {
-                width: 2 * @THIRDS - 2 * @SECTION_PADDING_HORIZONTAL;
-
-            }
-        }
-        end {
-            //just to clean up float if nothing else does it
-            display: block;
-            clear: both;
         }
     }
     &:last-child {

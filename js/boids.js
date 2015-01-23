@@ -1,3 +1,4 @@
+$(document).ready(function() {
 ;(function(e,t,n){function i(n,s){if(!t[n]){if(!e[n]){var o=typeof require=="function"&&require;if(!s&&o)return o(n,!0);if(r)return r(n,!0);throw new Error("Cannot find module '"+n+"'")}var u=t[n]={exports:{}};e[n][0].call(u.exports,function(t){var r=e[n][1][t];return i(r?r:t)},u,u.exports)}return t[n].exports}var r=typeof require=="function"&&require;for(var s=0;s<n.length;s++)i(n[s]);return i})({1:[function(require,module,exports){
 var fps = require('fps')
   , ticker = require('ticker')
@@ -23,6 +24,9 @@ var canvas = document.getElementById('boids')
 $(document).ready(function() {
   canvas.width = $(canvas).width();
   canvas.height = $(canvas).height();
+
+  ctx.fillStyle = '#1463a3';
+  ctx.fillRect(0, 0, canvas.width, canvas.height)
 });
 
 for (var i=0; i<100; ++i) {
@@ -32,11 +36,6 @@ for (var i=0; i<100; ++i) {
   ]);
 }
 
-$(".about").click(function(evt) {
-  var t = (new Date()).getTime();
-  console.log('rgba('+Math.floor(20+6*Math.cos(t/2997.0))+','+Math.floor(63+8*Math.sin(t/2991.0))+','+Math.floor(105+10*Math.cos(-t/2993.0))+',0.15)');
-});
-
 ticker(window, 30).on('tick', function() {
   boids.tick()
 }).on('draw', function() {
@@ -44,12 +43,7 @@ ticker(window, 30).on('tick', function() {
     , halfHeight = canvas.height/2
     , halfWidth = canvas.width/2
 
-function rint(min, max) {
-  return Math.floor(Math.random() * (max - min)) + min;
-}
-
-  var t = (new Date()).getTime();
-  ctx.fillStyle = 'rgba('+Math.floor(20+6*Math.cos(t/2997.0))+','+Math.floor(63+8*Math.sin(t/2991.0))+','+Math.floor(105+10*Math.cos(-t/2993.0))+',0.15)'
+  ctx.fillStyle = 'rgba(16,63,105,0.15)';
   ctx.fillRect(0, 0, canvas.width, canvas.height)
 
   ctx.fillStyle = '#1463a3'
@@ -67,7 +61,7 @@ function rint(min, max) {
   }
 })
 
-},{"fps":2,"ticker":3,"debounce":4,"./":5}],4:[function(require,module,exports){
+},{"fps":2,"debounce":3,"ticker":4,"./":5}],3:[function(require,module,exports){
 /**
  * Debounces a function by the given threshold.
  *
@@ -577,7 +571,7 @@ fps.prototype.tick = function() {
 }
 
 
-},{"events":7,"inherits":8}],3:[function(require,module,exports){
+},{"events":7,"inherits":8}],4:[function(require,module,exports){
 var raf = require('raf')
   , EventEmitter = require('events').EventEmitter
 
@@ -658,3 +652,4 @@ raf.now = now
 })()
 },{"events":7}]},{},[1])
 ;
+});
