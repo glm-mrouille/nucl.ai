@@ -57,8 +57,8 @@ section:nth-child(odd) {
 section:nth-child(odd):last-child {
   box-shadow: inset 0 -22px 25px -20px #f1f0ef;
 }
-section:nth-child(odd):first-child {
-  box-shadow: none;
+section:nth-child(odd):last-child content {
+  padding-bottom: 100px;
 }
 section grid {
   width: 960px;
@@ -67,9 +67,8 @@ section grid {
 }
 section grid content {
   padding: 20px 0;
-}
-section grid content item {
   display: block;
+  overflow: hidden;
 }
 section grid content item p:first-child {
   font-weight: bold;
@@ -103,12 +102,13 @@ header content a.visible {
   background-color: #6409a5;
 }
 .splash-screen-wrap {
-  background-color: #a18d75;
+  min-height: inherit;
+  background: center;
+  background-size: cover;
 }
 section.splash-screen {
   min-height: calc(68.66666667vh);
-  background: center;
-  background-size: cover;
+  background-color: #a18d75;
 }
 section.splash-screen splash {
   display: block;
@@ -287,4 +287,44 @@ section.topics content item {
   float: left;
   width: 300px;
   margin: 0 10px;
+  padding-top: 40px;
+  text-align: center;
+}
+section.topics content item thumbnail {
+  display: block;
+  width: 230px;
+  height: 230px;
+  border-radius: 115px;
+  -webkit-border-radius: 115px;
+  -moz-border-radius: 115px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: auto;
+}
+section.topics content item thumbnail overlay {
+  display: block;
+  width: 230px;
+  height: 230px;
+  border-radius: 115px;
+  -webkit-border-radius: 115px;
+  -moz-border-radius: 115px;
+  /*
+                    width: calc(100% + 2px);
+                    height: calc(100% + 2px);
+                    position: relative;
+                    top: -2px;
+                    left: -2px;
+                    */
+  box-sizing: border-box;
+  background-color: rgba(51, 51, 51, 0.6);
+  cursor: pointer;
+  margin-bottom: 20px;
+  border: solid 4px;
+  border-color: rgba(51, 51, 51, 0.6);
+  transition: 0.5s;
+}
+section.topics content item thumbnail overlay:hover {
+  background: none;
+  border-color: rgba(255, 147, 0, 0.8);
 }
