@@ -64,6 +64,7 @@ section grid {
   max-width: 960px;
   margin: auto;
   display: block;
+  padding: 20px 0;
   *zoom: 1;
 }
 section grid:before,
@@ -198,10 +199,6 @@ section.about {
   position: relative;
 }
 section.about content {
-  display: inline;
-  float: left;
-  width: 97.91666667%;
-  margin: 0 1.04166667%;
   min-height: calc(33.33333333vh);
   background: none;
 }
@@ -225,25 +222,25 @@ section.about content h3 {
 .ios section.about content h3 {
   text-shadow: none;
 }
-section.about content .columns {
-  -webkit-column-count: 3;
-  /* Chrome, Safari, Opera */
-  -moz-column-count: 3;
-  /* Firefox */
-  column-count: 3;
-  -webkit-column-gap: 24px;
-  /* Chrome, Safari, Opera */
-  -moz-column-gap: 24px;
-  /* Firefox */
-  column-gap: 24px;
-  text-align: justify;
-  margin-top: 28ex;
-}
 section.about content .columns p {
+  display: inline;
+  float: left;
+  width: 31.25%;
+  margin: 0 1.04166667%;
+  text-align: justify;
   color: #ffffff;
   font-size: 17px;
   line-height: 1.25;
-  margin-top: 0;
+  margin-top: 28ex;
+}
+@media screen and (max-width: 420px) {
+  section.about content .columns p {
+    display: inline;
+    float: left;
+    width: 97.91666667%;
+    margin: 0 1.04166667%;
+    margin-top: 4ex;
+  }
 }
 section.about canvas {
   width: 100%;
