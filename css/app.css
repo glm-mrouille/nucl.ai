@@ -233,7 +233,7 @@ section.about content .columns p {
   line-height: 1.25;
   margin-top: 28ex;
 }
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 432px) {
   section.about content .columns p {
     display: inline;
     float: left;
