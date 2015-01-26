@@ -160,6 +160,9 @@ section.splash-screen splash content titles h1 {
   margin: 0;
   text-shadow: 0px 0px 4px #808080;
 }
+.ios section.splash-screen splash content titles h1 {
+  text-shadow: none;
+}
 section.splash-screen splash content titles h2 {
   margin: 0;
   font-size: 14pt;
