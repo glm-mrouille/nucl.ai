@@ -1,8 +1,34 @@
-<!-- initially invisible - will slide in -->
-<a href="#top" class="scrolllink transparent nuclAi-go-top">NuclAi</a>
-<a href="#about" class="scrolllink"> ABOUT </a>
-<a href="#tickets" class="scrolllink"> TICKETS </a>
-<a href="#speakers" class="scrolllink"> SPEAKERS </a>
-<a href="#call-for-papers" class="scrolllink"> CALL FOR PAPERS </a>
-<a href="#venue" class="scrolllink"> VENUE </a>
-<a href="/news"> NEWS </a>
+<section class="navigation">
+    <div class="layer-color">
+        <grid>
+            <content>
+                <item class="logo">
+                    <a href="/" id="nav-logo" class="logo"> LOGO 
+                    <logo></logo>
+                    </a>
+                </item>
+                {% if page.name == "about.html" %}
+                    <item class="selected">
+                        <a href="/about"> About </a>
+                    </item>
+                {% else %}
+                    <item>
+                        <a href="/about"> About </a>
+                    </item>
+                {% endif %}
+                <item>
+                    <a href="#tickets"> Tickets </a>
+                </item>
+                <item>
+                    <a href="#speakers"> Speakers </a>
+                </item>
+                <item>
+                    <a href="#call-for-papers"> Call For Papers</a>
+                </item>
+                <item>
+                    <a href="#news"> News </a>
+                </item>
+            </content>
+        </grid>
+    </div>
+</section>

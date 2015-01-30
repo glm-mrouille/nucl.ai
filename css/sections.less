@@ -9,12 +9,14 @@ section {
     &:nth-child(odd) {
         background-color: @GREY;
         &:last-child { 
-            box-shadow: inset 0 -22px 25px -20px @LIGHT_GREY;
+            box-shadow: inset 0 -22px 25px -20px fade(@LIGHT_GREY, 70%);
             content {
                 padding-bottom: 5 * @CONTENT_PADDING_VERTICAL; // making some space for box shadow
             }
         }
     }
+
+    & > h2 { box-shadow: inset 0 -22px 25px -20px fade(@LIGHT_GREY, 70%); }
 
     grid {
         width: @PAGE_WIDHT;
@@ -26,18 +28,14 @@ section {
         content {
             display: block;
             overflow: hidden;
-            item {
-                p {
-                    &:first-child {
-                        font-weight: bold;
-                        display: inline-block;
-                        min-height: 30px
-                    }
-                }
-            }
         }
     }
     &:last-child {
         min-height: calc(~"100vh - @{FOOTER_HEIGHT}");
     }
+}
+
+section.empty-section {
+    //for switching coors order
+    display: none;
 }

@@ -7,7 +7,11 @@
 @PAGE_MAX_WIDTH: @gridsystem-width;
 
 //consts
-@SMARTPHONE_MAX_PORTRAIT: 432px; //should cover iphone 6 and galaxy s5 too
+@SMARTPHONE_MAX_PORTRAIT: 432px; //should cover iphone 6 and galaxy s5 toos
+
+//page layout
+@PAGE_FIRST_SECTION_HEIGHT: 100vh - 100vh / 4;
+@PAGE_NAVIGATION_HEIGHT: 60px;
 
 //setting up defaults
 html, body {
@@ -17,8 +21,13 @@ html, body {
     color: white;
 }
 
+body:after, body:before {}
+
 h2 {
     text-align: center;
+    font-size: 36px;
+    margin: 0;
+    padding: 0.8em 0;
 }
 
 .opacity0 {
@@ -76,4 +85,15 @@ form {
             cursor: pointer;
         }
     }
+}
+
+orange, .orange {
+    color: @ORANGE;
+}
+
+icon {
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    display: block;
 }
