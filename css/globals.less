@@ -13,6 +13,8 @@
 @PAGE_FIRST_SECTION_HEIGHT: 100vh - 100vh / 4;
 @PAGE_NAVIGATION_HEIGHT: 60px;
 
+@GRADIENT_GREY: inset 0 -85px 50px -50px rgba(241, 240, 239, 0.12);
+
 //setting up defaults
 html, body {
     padding: 0;
@@ -34,11 +36,6 @@ h2 {
     opacity: 0;
 }
 
-.centered-flex() {
-    display: flex;
-    justify-content: space-around;
-    flex-flow: column nowrap;
-}
 
 .rotate(@angle) {
     -ms-transform: rotate(@angle); /* IE 9 */
@@ -96,4 +93,16 @@ icon {
     background-size: contain;
     background-position: center;
     display: block;
+}
+
+div.table {
+    min-height: inherit;
+    display: table;
+    margin: auto;
+}
+
+div.centered-cell {
+    min-height: inherit;
+    display: table-cell;
+    vertical-align: middle;
 }

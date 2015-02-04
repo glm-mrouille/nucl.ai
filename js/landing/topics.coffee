@@ -9,6 +9,10 @@ $ ->
   ## draw line between selected thumbnail and text
   paper = Raphael('section-topics', "100%", "100%") # draw within the whole section
 
+
+  ## get original thumbnail size
+  originalHeight = $("thumbnail").first().height()
+
   clearLine = () ->
     $("svg path").remove()
 
@@ -42,13 +46,20 @@ $ ->
       paper.path("M " + title.offset().left + " " + originalEndY + "L " + (title.offset().left + title.width()) + " " + originalEndY)
 
   drawLine()
-  
+
+  setThumbnailSize = () ->
+    $("thumbnail-wrap").each ->
+      wrap = $(this)
+      wrap.height(wrap.width())
+
+
+  setThumbnailSize()
   ## listen when window resizes to clear lines and redrew them once finished
   resizeEnd = null
   $(window).resize ->
     clearLine()
-    clearTimeout(resizeEnd)
-    resizeEnd = setTimeout(drawLine,100)
+    setThumbnailSize()
+    drawLine()
 
 
   ## hide/show overlay on animation start/end
@@ -64,8 +75,15 @@ $ ->
       selectedTxt = $(".description[name='" + selected.attr('name') + "']")
       selectedTitle = $("item.thumbnail .thumbnail-title[name='" + selected.attr('name') + "']")
 
-    initialHeight = thumbnail.height()
-    overlay = thumbnail.children("overlay")
+
+    ## change title color on thumbnail hover
+    mouseEnter = () ->
+      $("item.thumbnail .thumbnail-title[name='" + thumbnail.attr('name') + "']").addClass("hover")
+    mouseLeave = () ->
+      $("item.thumbnail .thumbnail-title[name='" + thumbnail.attr('name') + "']").removeClass("hover")
+
+    thumbnail.hover mouseEnter, mouseLeave
+
 
     thumbnail.click ->
       thumbnail.toggleClass("selected")
@@ -76,7 +94,14 @@ $ ->
           selected.toggleClass("selected")
           selectedTxt.toggleClass("selected")
           selectedTitle.toggleClass("selected")
-          selected.children("overlay").hide() # hide overlay during the animation
+          ## if selected has minimum size show overlay, otherwise wait for it
+          if selected.height() == originalHeight
+             selected.children("overlay").show()
+          else
+            selected.one animate.onTransitonEnd, (event) ->
+              if event.originalEvent.propertyName == "width" and selected.height() == originalHeight
+                selected.children("overlay").show()
+
         selected = thumbnail
         selectedTxt = $(".description[name='" + selected.attr('name') + "']")
         selectedTitle = $("item.thumbnail .thumbnail-title[name='" + selected.attr('name') + "']")
@@ -84,15 +109,12 @@ $ ->
         selected = null
         selectedTitle - null
         selectedTxt = null
-      overlay.hide();
-      clearLine();
+      clearLine()
+      drawLine()
 
-    thumbnail.bind animate.onTransitonEnd, (event) ->
-      if event.originalEvent.propertyName == "height"
-        overlay.show()
-        drawLine()
 
   ## color name / surname
+  ## @TODO: move me to liquid filter
   applyColors = (title, text, last) ->
     text =  "<span class='colored'>" + text + "</span>"
     if last then text += last

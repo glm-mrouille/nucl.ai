@@ -1,71 +1,76 @@
-@THUMBNAIL_SIZE: 230px;
-@THUMBNAIL_SIZE_LARGE: 250px;
+@THUMBNAIL_SIZE: 80%;
+/** 
+* This value must be replicated it config.coffee. Thumbnail needs to know its final size to listen for transitionEnd if size isn't final 
+*/
+@THUMBNAIL_SIZE_LARGE: 90%;
+/****************************/
 @THUMBNAIL_BORDER_SIZE: 4px;
-@THUMBNAIL_BORDER_SIZE_SELECTED: 6px;
+@THUMBNAIL_BORDER_SIZE_SELECTED: 4px;
 @THUMBNAIL_LINE_SCREEN_MIN_SIZE: 800px;
 
 section.topics {
     position: relative;
     z-index: 1;
+
+    h2 {
+        margin-top: 20px;
+    }
+
     content {
         item.thumbnail {
             overflow: hidden;
-            padding-bottom: 30px;
+            padding-bottom: 1em;
             .column(4);
             text-align: center;
             thumbnail-wrap {
-                height: @THUMBNAIL_SIZE_LARGE + 3px; //to clean jump effect and provide smooth transition
-                display: table-cell;
+                display: block;
                 text-align: center;
-                vertical-align: middle;
-                width: inherit;
+                overflow: hidden;
                 thumbnail {
-                    .circular(@THUMBNAIL_SIZE);
+                    margin: (100% - @THUMBNAIL_SIZE) / 2;
+                    .circular(@THUMBNAIL_SIZE, 100%);
                     cursor: pointer;
                     background-position: center;
                     background-repeat: no-repeat;
                     background-size: cover;
-                    margin: auto;
                     display: inline-block;
-                    transition: 0.2s;
-                    &.selected {
-                        .circular(@THUMBNAIL_SIZE_LARGE);
-                        overlay {
-                            .circular(@THUMBNAIL_SIZE_LARGE);
-                            border: solid @THUMBNAIL_BORDER_SIZE_SELECTED;
-                            border-color: fade(@ORANGE, 70%);
-                            background-color: fade(@DARK_GREY, 0%);
-                        }
+                    box-sizing: border-box;
+                    border: solid @THUMBNAIL_BORDER_SIZE;
+                    border-color: lighten(@GREY, 5%);
+                    -webkit-filter: grayscale(100%);
+                    filter: grayscale(100%);
+                    // transition: 0.2s;
+                    &:hover, &.selected {
+                        margin: (100% - @THUMBNAIL_SIZE_LARGE) / 2;
+                        .circular(@THUMBNAIL_SIZE_LARGE, 100%);
+                        border: solid @THUMBNAIL_BORDER_SIZE_SELECTED;
+                        border-color: lighten(@BLUE, 25%);
+                        -webkit-filter: none;
+                        filter: none;
                     }
-                    overlay {
-                        .circular(@THUMBNAIL_SIZE);
-                        // removed border rough edges if appears
-                         /*
-                        width: calc(100% + 2px);
-                        height: calc(100% + 2px);
-                        position: relative;
-                        top: -2px;
-                        : -2px;
-                        */
-                        box-sizing: border-box;
-                        background-color: fade(@DARK_GREY, 50%);
-                        border: solid @THUMBNAIL_BORDER_SIZE;
-                        border-color: fade(@DARK_GREY, 60%);
+                    &.selected {
+                        border-color: @ORANGE;
                     }
                 }
             }
+
             &.clear {
                 clear: both; //left starts alwyas from 'left'...
             }
             p.thumbnail-title {
+                font-size: 24px;
                 font-weight: bold;
+                &.hover {
+                    /* @TODO: set up color */
+                    color: lighten(@BLUE, 25%);
+                }
                 &.selected {
                     display: none;
                 }
-                color: @MID_BLUE;
-                .colored {
+                color: lighten(white, 25%);
+                /* .colored {
                     color: @WHITE;
-                }
+                } */
             }
         }
         item.description {
@@ -73,15 +78,36 @@ section.topics {
             .push(2);
             display: none;
             text-align: justify;
-            &:not(.last-row) { padding-bottom: 75px; }
 
+            &:not(.last-row) { padding-bottom: 75px; }
             &.selected { display: block; }
+
+            font-size: 19px;
+            color: @LIGHT_GREY;
+
             h2 {
                 color: @ORANGE;
                 &.left { text-align: left; margin-left: 10px; }
                 &.middle { text-align: center; }
                 &.right { text-align: right; margin-right: 10px;}
                 padding: 0.5em 0 0.5em;
+            }
+
+            p {
+                line-height: 1.25;
+                &.note {
+                    color: @GREY;
+                    a {
+                        color: @GREY;
+                        text-decoration: none;
+                    }
+                }
+            }
+
+            h3 {
+                font-size: 24px;
+                margin-bottom: 0;
+                color: @GREY;
             }
         }
     }

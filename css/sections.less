@@ -1,22 +1,32 @@
 @CONTENT_PADDING_VERTICAL: 20px;
 
+.theme_blue() {
+    background-color: @BLUE;
+    a { color: @LIGHT_BLUE; }
+}
+
+.theme_grey() {
+    background-color: @DARK_GREY;
+    a { color: @MID_BLUE; }
+}
+
 section {
     min-height: calc(~"85vh");
     overflow: hidden;
     &:nth-child(even) {
-        background-color: @BLUE;
+        .theme_blue();
     }
     &:nth-child(odd) {
-        background-color: @GREY;
-        &:last-child { 
-            box-shadow: inset 0 -22px 25px -20px fade(@LIGHT_GREY, 70%);
-            content {
-                padding-bottom: 5 * @CONTENT_PADDING_VERTICAL; // making some space for box shadow
-            }
+        .theme_grey();
+    }
+
+    .titlebar {
+        &.small {
+            padding: 0.4em 0;
         }
     }
 
-    & > h2 { box-shadow: inset 0 -22px 25px -20px fade(@LIGHT_GREY, 70%); }
+    // & > h2 { box-shadow: @GRADIENT_GREY; }
 
     grid {
         width: @PAGE_WIDHT;
@@ -35,7 +45,17 @@ section {
     }
 }
 
-section.empty-section {
-    //for switching coors order
-    display: none;
+
+sections.page .page-content-sections section {
+    min-height: initial;
+    // reveresed color schema for page layout
+    &:nth-child(even) {
+        .theme_grey();
+    }
+    &:nth-child(odd) {
+        .theme_blue();
+    }
+    &:only-child {
+        min-height: calc(~"@{PAGE_FIRST_SECTION_HEIGHT} - @{FOOTER_HEIGHT} - @{PAGE_NAVIGATION_HEIGHT}");
+    }
 }
