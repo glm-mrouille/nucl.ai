@@ -56,9 +56,19 @@ icon {
   background-position: center;
   display: block;
 }
+div.table {
+  min-height: inherit;
+  display: table;
+  margin: auto;
+}
+div.centered-cell {
+  min-height: inherit;
+  display: table-cell;
+  vertical-align: middle;
+}
 footer {
   display: block;
-  background-color: #333333;
+  background-color: #262626;
   color: #c0c0c0;
   width: 100%;
   min-height: 150px;
@@ -83,10 +93,25 @@ footer content icons {
   padding-top: 30px;
 }
 footer content icons a {
-  width: 30px;
-  height: 30px;
+  width: 60px;
+  height: 60px;
   display: inline-block;
-  margin: 0 10px;
+  transform: scale(0.5);
+}
+footer content icons a.twitter {
+  background-position: 120px 0px;
+}
+footer content icons a.twitter:hover {
+  background-position: 120px 60px;
+}
+footer content icons a.google:hover {
+  background-position: 0px 60px;
+}
+footer content icons a.facebook {
+  background-position: 60px 0px;
+}
+footer content icons a.facebook:hover {
+  background-position: 60px 60px;
 }
 footer content copyrights {
   line-height: 60px;
@@ -100,16 +125,19 @@ section.splash-screen {
   min-height: calc(66.66666667vh);
   background-color: #a18d75;
 }
+section.splash-screen .table {
+  height: calc(66.66666667vh);
+}
 section.splash-screen splash {
   display: block;
   background-color: rgba(34, 44, 66, 0.75);
   min-height: inherit;
-  display: flex;
-  justify-content: space-around;
-  flex-flow: column nowrap;
+  text-align: center;
+  width: 100%;
 }
 section.splash-screen splash content {
   padding: 40px 0;
+  display: inline-block;
   text-align: center;
 }
 section.splash-screen splash content logo-wrap {
@@ -210,17 +238,17 @@ section {
 section:nth-child(even) {
   background-color: #103f69;
 }
+section:nth-child(even) a {
+  color: #a5cce9;
+}
 section:nth-child(odd) {
   background-color: #333333;
 }
-section:nth-child(odd):last-child {
-  box-shadow: inset 0 -22px 25px -20px rgba(241, 240, 239, 0.7);
+section:nth-child(odd) a {
+  color: #1463a3;
 }
-section:nth-child(odd):last-child content {
-  padding-bottom: 100px;
-}
-section > h2 {
-  box-shadow: inset 0 -22px 25px -20px rgba(241, 240, 239, 0.7);
+section .titlebar.small {
+  padding: 0.4em 0;
 }
 section grid {
   width: 100%;
@@ -245,8 +273,33 @@ section grid content {
 section:last-child {
   min-height: calc(100vh - 150px);
 }
-section.empty-section {
-  display: none;
+sections.page .page-content-sections section {
+  min-height: initial;
+}
+sections.page .page-content-sections section:nth-child(even) {
+  background-color: #333333;
+}
+sections.page .page-content-sections section:nth-child(even) a {
+  color: #1463a3;
+}
+sections.page .page-content-sections section:nth-child(odd) {
+  background-color: #103f69;
+}
+sections.page .page-content-sections section:nth-child(odd) a {
+  color: #a5cce9;
+}
+sections.page .page-content-sections section:only-child {
+  min-height: calc(75vh - 150px - 60px);
+}
+form.newsletter-form input[type="text"],
+form.newsletter-form input[type="email"] {
+  width: calc(100% - 2 * 10px);
+}
+form.newsletter-form input[type="submit"] {
+  margin-top: 10px;
+}
+form.newsletter-form div.submit-holder {
+  text-align: center;
 }
 header {
   display: block;
@@ -333,23 +386,20 @@ header content a.visible {
   position: absolute;
   z-index: -1;
 }
-form.newsletter-form input[type="text"],
-form.newsletter-form input[type="email"] {
-  width: calc(100% - 2 * 10px);
-}
-form.newsletter-form input[type="submit"] {
-  margin-top: 10px;
-}
-form.newsletter-form div.submit-holder {
-  text-align: center;
-}
+/** 
+* This value must be replicated it config.coffee. Thumbnail needs to know its final size to listen for transitionEnd if size isn't final 
+*/
+/****************************/
 section.topics {
   position: relative;
   z-index: 1;
 }
+section.topics h2 {
+  margin-top: 20px;
+}
 section.topics content item.thumbnail {
   overflow: hidden;
-  padding-bottom: 30px;
+  padding-bottom: 1em;
   display: inline;
   float: left;
   width: 31.25%;
@@ -357,77 +407,63 @@ section.topics content item.thumbnail {
   text-align: center;
 }
 section.topics content item.thumbnail thumbnail-wrap {
-  height: 253px;
-  display: table-cell;
+  display: block;
   text-align: center;
-  vertical-align: middle;
-  width: inherit;
+  overflow: hidden;
 }
 section.topics content item.thumbnail thumbnail-wrap thumbnail {
+  margin: 10%;
   display: block;
-  width: 230px;
-  height: 230px;
-  border-radius: 115px;
-  -webkit-border-radius: 115px;
-  -moz-border-radius: 115px;
+  width: 80%;
+  height: 80%;
+  border-radius: 100%;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
   cursor: pointer;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  margin: auto;
   display: inline-block;
-  transition: 0.2s;
+  box-sizing: border-box;
+  border: solid 4px;
+  border-color: #8d8d8d;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+section.topics content item.thumbnail thumbnail-wrap thumbnail:hover,
+section.topics content item.thumbnail thumbnail-wrap thumbnail.selected {
+  margin: 5%;
+  display: block;
+  width: 90%;
+  height: 90%;
+  border-radius: 100%;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  border: solid 4px;
+  border-color: #2181d8;
+  -webkit-filter: none;
+  filter: none;
 }
 section.topics content item.thumbnail thumbnail-wrap thumbnail.selected {
-  display: block;
-  width: 250px;
-  height: 250px;
-  border-radius: 125px;
-  -webkit-border-radius: 125px;
-  -moz-border-radius: 125px;
-}
-section.topics content item.thumbnail thumbnail-wrap thumbnail.selected overlay {
-  display: block;
-  width: 250px;
-  height: 250px;
-  border-radius: 125px;
-  -webkit-border-radius: 125px;
-  -moz-border-radius: 125px;
-  border: solid 6px;
-  border-color: rgba(255, 147, 0, 0.7);
-  background-color: rgba(51, 51, 51, 0);
-}
-section.topics content item.thumbnail thumbnail-wrap thumbnail overlay {
-  display: block;
-  width: 230px;
-  height: 230px;
-  border-radius: 115px;
-  -webkit-border-radius: 115px;
-  -moz-border-radius: 115px;
-  /*
-                        width: calc(100% + 2px);
-                        height: calc(100% + 2px);
-                        position: relative;
-                        top: -2px;
-                        : -2px;
-                        */
-  box-sizing: border-box;
-  background-color: rgba(51, 51, 51, 0.5);
-  border: solid 4px;
-  border-color: rgba(51, 51, 51, 0.6);
+  border-color: #ff9300;
 }
 section.topics content item.thumbnail.clear {
   clear: both;
 }
 section.topics content item.thumbnail p.thumbnail-title {
+  font-size: 24px;
   font-weight: bold;
-  color: #1463a3;
+  color: #ffffff;
+  /* .colored {
+                    color: @WHITE;
+                } */
+}
+section.topics content item.thumbnail p.thumbnail-title.hover {
+  /* @TODO: set up color */
+  color: #2181d8;
 }
 section.topics content item.thumbnail p.thumbnail-title.selected {
   display: none;
-}
-section.topics content item.thumbnail p.thumbnail-title .colored {
-  color: #ffffff;
 }
 section.topics content item.description {
   display: inline;
@@ -437,6 +473,8 @@ section.topics content item.description {
   margin-left: 17.70833333%;
   display: none;
   text-align: justify;
+  font-size: 19px;
+  color: #f1f0ef;
 }
 section.topics content item.description:not(.last-row) {
   padding-bottom: 75px;
@@ -459,6 +497,21 @@ section.topics content item.description h2.right {
   text-align: right;
   margin-right: 10px;
 }
+section.topics content item.description p {
+  line-height: 1.25;
+}
+section.topics content item.description p.note {
+  color: #808080;
+}
+section.topics content item.description p.note a {
+  color: #808080;
+  text-decoration: none;
+}
+section.topics content item.description h3 {
+  font-size: 24px;
+  margin-bottom: 0;
+  color: #808080;
+}
 section.topics svg {
   position: absolute !important;
   z-index: -1;
@@ -467,28 +520,71 @@ section.topics svg path {
   stroke: #ff9300;
   stroke-width: 1px;
 }
-featured {
+div.featured-wrap {
+  display: table;
+  height: calc(33.33333333vh);
+  width: 100%;
+}
+div.featured-wrap featured {
+  display: table-cell;
+  vertical-align: middle;
+}
+div.featured-wrap featured .call-for-speakers .icon-and-title:hover {
+  cursor: pointer;
+}
+div.featured-wrap featured .call-for-speakers .icon-and-title:hover icon.megaphone {
+  -ms-transform: rotate(-15deg);
+  /* IE 9 */
+  -webkit-transform: rotate(-15deg);
+  /* Chrome, Safari, Opera */
+  transform: rotate(-15deg);
+  background-position-y: -100px;
+}
+div.featured-wrap featured .call-for-speakers .icon-and-title icon.megaphone {
+  background-size: initial;
+  background-position: initial;
+  width: 105px;
+  height: 100px;
+  margin-top: -100px;
+  margin-left: 10%;
+  transition: 0.5s;
+  transition-property: transform;
+}
+sections.page section.about content {
   display: inline;
   float: left;
   width: 97.91666667%;
   margin: 0 1.04166667%;
-  min-height: calc(33.33333333vh);
-  display: table;
 }
-featured .call-for-speakers {
-  display: table-cell;
-  vertical-align: middle;
+sections.page section.stay-informed p {
+  display: inline;
+  float: left;
+  width: 97.91666667%;
+  margin: 0 1.04166667%;
 }
-featured .call-for-speakers icon.megaphone {
-  width: 100px;
-  height: 100px;
-  margin-top: -100px;
-  padding-left: 10%;
+sections.page section.stay-informed .form-wrap {
+  display: inline;
+  float: left;
+  width: 47.91666667%;
+  margin: 0 1.04166667%;
+  margin-left: 26.04166667%;
 }
-sections.page section.about {
-  min-height: calc(75vh - 150px - 60px);
+sections.page section.stay-informed .form-wrap form.newsletter-form {
+  padding-top: 1.5em;
 }
-sections.page section.about content {
+sections.page section.contact-details content {
+  display: inline;
+  float: left;
+  width: 97.91666667%;
+  margin: 0 1.04166667%;
+}
+sections.page section.legal-notes content {
+  display: inline;
+  float: left;
+  width: 97.91666667%;
+  margin: 0 1.04166667%;
+}
+sections.page section.terms-and-conditions content {
   display: inline;
   float: left;
   width: 97.91666667%;
