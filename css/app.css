@@ -520,6 +520,179 @@ section.topics svg path {
   stroke: #ff9300;
   stroke-width: 1px;
 }
+.landing section#call p,
+.landing section#call ul,
+.landing section#call ol {
+  color: #f1f0ef;
+  font-size: 20px;
+  line-height: 1.34;
+}
+.landing section#call p.important,
+.landing section#call ul.important,
+.landing section#call ol.important {
+  font-weight: bold;
+  text-align: center;
+  font-size: 24px;
+  color: #ff9300;
+  padding-top: 1em;
+}
+.landing section#call ul,
+.landing section#call ol {
+  color: #a5cce9;
+}
+.landing section#call icon.megaphone {
+  background-size: initial;
+  background-position: initial;
+  width: 105px;
+  height: 100px;
+  margin: 30px 0 30px 60px;
+  transition: 0.5s;
+  transition-property: transform;
+  float: right;
+}
+.landing section#call icon.megaphone:hover {
+  cursor: pointer;
+  -ms-transform: rotate(15deg);
+  /* IE 9 */
+  -webkit-transform: rotate(15deg);
+  /* Chrome, Safari, Opera */
+  transform: rotate(15deg);
+  background-position-y: -100px;
+}
+/** 
+* This value must be replicated it config.coffee. Thumbnail needs to know its final size to listen for transitionEnd if size isn't final 
+*/
+/****************************/
+section.people {
+  position: relative;
+  z-index: 1;
+}
+section.people h2 {
+  margin-top: 20px;
+}
+section.people content item.thumbnail {
+  overflow: hidden;
+  padding-bottom: 1em;
+  display: inline;
+  float: left;
+  width: 31.25%;
+  margin: 0 1.04166667%;
+  text-align: center;
+}
+section.people content item.thumbnail thumbnail-wrap {
+  display: block;
+  text-align: center;
+  overflow: hidden;
+}
+section.people content item.thumbnail thumbnail-wrap thumbnail {
+  margin: 10%;
+  display: block;
+  width: 80%;
+  height: 80%;
+  border-radius: 100%;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  cursor: pointer;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: inline-block;
+  box-sizing: border-box;
+  border: solid 4px;
+  border-color: #8d8d8d;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+section.people content item.thumbnail thumbnail-wrap thumbnail:hover,
+section.people content item.thumbnail thumbnail-wrap thumbnail.selected {
+  margin: 5%;
+  display: block;
+  width: 90%;
+  height: 90%;
+  border-radius: 100%;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  border: solid 4px;
+  border-color: #2181d8;
+  -webkit-filter: none;
+  filter: none;
+}
+section.people content item.thumbnail thumbnail-wrap thumbnail.selected {
+  border-color: #ff9300;
+}
+section.people content item.thumbnail.clear {
+  clear: both;
+}
+section.people content item.thumbnail p.thumbnail-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffffff;
+  /* .colored {
+                    color: @WHITE;
+                } */
+}
+section.people content item.thumbnail p.thumbnail-title.hover {
+  /* @TODO: set up color */
+  color: #2181d8;
+}
+section.people content item.thumbnail p.thumbnail-title.selected {
+  display: none;
+}
+section.people content item.description {
+  display: inline;
+  float: left;
+  width: 64.58333333%;
+  margin: 0 1.04166667%;
+  margin-left: 17.70833333%;
+  display: none;
+  text-align: justify;
+  font-size: 19px;
+  color: #f1f0ef;
+}
+section.people content item.description:not(.last-row) {
+  padding-bottom: 75px;
+}
+section.people content item.description.selected {
+  display: block;
+}
+section.people content item.description h2 {
+  color: #ff9300;
+  padding: 0.5em 0 0.5em;
+}
+section.people content item.description h2.left {
+  text-align: left;
+  margin-left: 10px;
+}
+section.people content item.description h2.middle {
+  text-align: center;
+}
+section.people content item.description h2.right {
+  text-align: right;
+  margin-right: 10px;
+}
+section.people content item.description p {
+  line-height: 1.25;
+}
+section.people content item.description p.note {
+  color: #808080;
+}
+section.people content item.description p.note a {
+  color: #808080;
+  text-decoration: none;
+}
+section.people content item.description h3 {
+  font-size: 24px;
+  margin-bottom: 0;
+  color: #808080;
+}
+section.people svg {
+  position: absolute !important;
+  z-index: -1;
+}
+section.people svg path {
+  stroke: #ff9300;
+  stroke-width: 1px;
+}
 div.featured-wrap {
   display: table;
   height: calc(33.33333333vh);
